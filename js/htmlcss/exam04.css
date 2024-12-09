@@ -1,0 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    width: 800px;
+}
+
+header {
+    padding: 30px;
+    text-align: center;
+    background-color: darkgrey;
+    font-size: 35px;
+    color: white;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+}
+
+nav {
+    width: 200px;
+    padding: 50px;
+    background-color: goldenrod;
+}
+
+article {
+    flex-grow: 1;
+    padding: 50px;
+}
+
+footer {
+    padding: 10px;
+    text-align: center;
+    background-color: darkcyan;
+    color: white;
+}

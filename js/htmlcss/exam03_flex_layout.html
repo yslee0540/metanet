@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        section {
+            display: flex;
+        }
+
+        .left {
+            flex-grow: 2;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <img src="/common/images/naver-image/image1.png">
+        </header>
+        <section>
+            <div class="left">
+                <img src="/common/images/naver-image/image2.png">
+            </div>
+            <div class="right">
+                <img src="/common/images/naver-image/image3.png">
+                <img src="/common/images/naver-image/image4.png">
+            </div>
+        </section>
+        <section>
+            <div class="left">
+                <img src="/common/images/naver-image/image5.png">
+            </div>
+            <div class="right">
+                <img src="/common/images/naver-image/image6.png">
+            </div>
+        </section>
+    </div>
+</body>
+</html>

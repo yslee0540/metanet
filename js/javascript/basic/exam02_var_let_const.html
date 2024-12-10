@@ -28,5 +28,20 @@
         console.log("var4: " + var4);
         console.log("var5: " + var5);
     </script>
+
+    <script>
+        function fun1() {
+            if(true) {
+                var var6 = 7;   //함수 단위 로컬 변수
+                let var7 = 8;   //블록 단위 로컬 변수
+                const var8 = 9; //블록 단위 로컬 변수
+            }
+            console.log("var6: " + var6);
+            // console.log("var7: " + var7); (x)
+            // console.log("var8: " + var8); (x)
+        }
+        fun1();
+        // console.log("var6: " + var6); (x)
+    </script>
 </body>
 </html>

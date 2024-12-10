@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //비교 연산자
+        let var1 = 10;
+        let var2 = "10";
+        console.log("var1 == var2:", var1 == var2); //true
+        console.log("var1 != var2:", var1 != var2); //false
+        //타입까지 확인
+        console.log("var1 === var2:", var1 === var2); //false
+        console.log("var1 !== var2:", var1 !== var2); //true
+
+        //논리 연산자
+        var var3 = true;
+        var var4 = false;
+        console.log("var3 && var4:", var3 && var4); //false
+        console.log("var3 || var4:", var3 || var4); //true
+
+        //&& 앞이 true이면 뒤의 값이 됨
+        //앞이 false면 무조건 false
+        var var5 = var3 && "홍길동";
+        var var6 = var4 && "홍길동";
+        console.log("var5:", var5); //홍길동
+        console.log("var6:", var6); //false
+        
+        //|| 앞이 true이면 무조건 true
+        //앞이 false면 뒤의 값이 됨
+        var var7 = var3 || "홍길동"
+        var var8 = var4 || "홍길동"
+        console.log("var7:", var7); //false
+        console.log("var8:", var8); //홍길동
+    </script>
+</body>
+</html>

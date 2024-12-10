@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Car {
+            constructor(name="그랜저", price=5000) {
+                this.name = name;
+                this.price = price;
+            }
+
+            start() {
+                console.log(this.name + "가 시동을 겁니다.")
+            }
+            setPrice(price) {
+                this.price = price;
+            }
+        }
+
+        class SportsCar extends Car {
+            //정적 속성 선언 가능
+            static SPORTS_MODE = "sports";
+            static NOMAL_MODE = "normal";
+
+            constructor(name, price, mode) {
+                super(name, price);
+                //인스턴스 속성 선언
+                this.mode = mode;
+            }
+
+            setMode(mode) {
+                this.mode = mode;
+            }
+        }
+
+        const myCar = new SportsCar("포르쉐", 6000, SportsCar.SPORTS_MODE);
+        console.log(myCar.name);
+        console.log(myCar.price);
+        console.log(myCar.mode);
+
+        //값 변경 가능
+        SportsCar.NOMAL_MODE = "xxx";
+        console.log(SportsCar.NOMAL_MODE);
+    </script>
+</body>
+</html>

@@ -45,7 +45,7 @@ from employees e
 join departments d on (e.department_id=d.department_id)
 order by first_name;
 
-select row_number,	first_name,	salary
+select row_number, first_name, salary
 from (select first_name, salary,
       row_number() over (order by salary desc) as row_number
       from employees)
@@ -79,3 +79,10 @@ from employees
 start with manager_id is null
 connect by prior employee_id=manager_id
 order siblings by first_name;
+
+select employee_id,
+    lpad(' ', 3*(level-1)) || first_name || ' ' || last_name as full_name,
+    level
+from employees
+start with employee_id = 113
+connect by prior manager_id=employee_id;

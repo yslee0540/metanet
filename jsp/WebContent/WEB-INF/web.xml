@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>WebPrj</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 서블릿 하나당 하나씩 들어감 -->
+  <servlet>
+  	<servlet-name>SimpleServlet</servlet-name>
+  	<servlet-class>com.example.myweb.SimpleServlet</servlet-class>
+  	<init-param>
+  		<param-name>filepath</param-name>
+  		<param-value>C:/dev/workspace</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SimpleServlet</servlet-name>
+  	<url-pattern>/simple.do</url-pattern>
+  </servlet-mapping>
+</web-app>

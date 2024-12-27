@@ -74,6 +74,80 @@ public class MemberDao {
 		return pw;
 	}
 	
+	public MemberDto getMember(String userid) {
+		MemberDto member = new MemberDto();
+		Connection con = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "select userid, name, password, email, address "
+					   + "from member where userid = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, userid);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				member.setUserid(rs.getString("userid"));
+				member.setName(rs.getString("name"));
+				member.setPassword(rs.getString("password"));
+				member.setEmail(rs.getString("email"));
+				member.setAddress(rs.getString("address"));
+			} else {
+				throw new RuntimeException("사용자가 없습니다");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			closeConnection(con);
+		}
+		return member;
+	}
+	
+	public void updateMember(MemberDto member) {
+		Connection con = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "update member set name=?, password=?, email=?, address=? "
+					   + "where userid=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, member.getName());
+			stmt.setString(2, member.getPassword());
+			stmt.setString(3, member.getEmail());
+			stmt.setString(4, member.getAddress());
+			stmt.setString(5, member.getUserid());
+			
+			int rowCount = stmt.executeUpdate();
+			if (rowCount <= 0) {
+				throw new RuntimeException("변경된 행이 없습니다.");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		} finally {
+			closeConnection(con);
+		}
+	}
+	
+	public void deleteMember(String userid, String password) {
+		Connection con = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "delete from member where userid=? and password=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, userid);
+			stmt.setString(2, password);
+			
+			int rowCount = stmt.executeUpdate();
+			if (rowCount <= 0) {
+				throw new RuntimeException("아이디 또는 비밀번호가 다릅니다.");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		} finally {
+			closeConnection(con);
+		}
+	}
+	
 	private void closeConnection(Connection con) {
 		if (con != null) {
 			try {

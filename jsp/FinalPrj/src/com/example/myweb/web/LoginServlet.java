@@ -19,8 +19,15 @@ public class LoginServlet extends HttpServlet {
 	MemberDao dao = new MemberDao();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().invalidate();
-		response.sendRedirect("loginform.jsp");
+		String action = request.getParameter("action");
+		if ("loginok".equals(action)) {
+			//로그인한 사용자
+		} else {
+			request.getSession().invalidate();
+		}
+		//response.sendRedirect("loginform.jsp");
+		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/views/loginform.jsp");
+		disp.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +41,8 @@ public class LoginServlet extends HttpServlet {
 			if (dbpw.equals(password)) {
 				session.setAttribute("userid", userid);
 				request.setAttribute("message", userid + "님 환영합니다.");
-				response.sendRedirect("loginform.jsp");
+				//response.sendRedirect("loginform.jsp");
+				response.sendRedirect("/Login.do?action=loginok");
 				return;
 			} else {
 				throw new RuntimeException("비밀번호가 다릅니다.");
@@ -47,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 			view = "loginerror.jsp";
 		}
-		RequestDispatcher disp = request.getRequestDispatcher(view);
+		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/views/" + view);
 		disp.forward(request, response);
 	}
 

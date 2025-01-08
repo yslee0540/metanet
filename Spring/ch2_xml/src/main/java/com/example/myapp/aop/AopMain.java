@@ -1,0 +1,18 @@
+package com.example.myapp.aop;
+
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class AopMain {
+
+	public static void main(String[] args) {
+//		IHelloService helloService = new HelloService();
+//		helloService.sayHello("JK");
+		
+		AbstractApplicationContext context = new GenericXmlApplicationContext("application-config.xml");
+		HelloController controller = context.getBean(HelloController.class);
+		controller.hello("홍길동");
+		context.close();
+	}
+
+}

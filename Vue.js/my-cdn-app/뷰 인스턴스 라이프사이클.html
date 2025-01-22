@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">{{message}}</div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            el: '#app',
+            data() {
+                return {
+                    message: 'Hello Vue.js!'
+                }
+            },
+            beforeCreate: function() {
+                console.log("beforeCreate");
+            },
+            created: function() {
+                console.log("created");
+            },
+            mounted: function() {
+                console.log("mounted");
+                this.message = 'Hello World'
+            },
+            updated: function() {
+                console.log("updated");
+            }
+        });
+        app.mount("#app")
+    </script>
+</body>
+</html>
